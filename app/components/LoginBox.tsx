@@ -26,7 +26,7 @@ const LoginModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem('token', data.token); // Store token for future requests
+        sessionStorage.setItem('token', data.token); // Store token for future requests
         alert('Login successful!');
         console.log("token: ",data.token)
         onClose(); // Close modal on success

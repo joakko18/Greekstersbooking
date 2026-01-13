@@ -22,7 +22,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   useEffect(() => {
     // Check if token exists in localStorage
-    setIsLoggedIn(!!localStorage.getItem('token'));
+    setIsLoggedIn(!!sessionStorage.getItem('token'));
   }, []);
 
   const login = () => {
@@ -30,7 +30,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
     setIsLoggedIn(false);
   };
 
@@ -40,3 +40,4 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     </AuthContext.Provider>
   );
 };
+//mirar si el login depende de la existencia del token en sessionStorage o hay un error de logica en el componente que al cerrar el modal, me arroja que estoy logueado sin tener token.

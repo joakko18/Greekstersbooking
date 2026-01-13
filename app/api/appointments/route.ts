@@ -124,7 +124,7 @@ export async function POST(req: Request) {
       </ul>
       <p>We look forward to serving you!</p>
       <p>Best regards,</p>
-      <p>Your Company Name</p>
+      <p>Greeksters</p>
     `;
 
     // Send the email

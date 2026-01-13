@@ -48,9 +48,15 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <div className="flex flex-col items-end w-1/2">
             <p className="mb-2">Contact Us!</p>
             <div className="flex space-x-4">
-              <a href="#"><img src="https://res.cloudinary.com/desem7vhd/image/upload/v1741073760/Facebook_Logo_Primary_uidern.png" alt="Facebook" className="w-6 h-6" /></a>
-              <a href="#"><img src="https://res.cloudinary.com/desem7vhd/image/upload/v1741074023/Digital_Glyph_Green_kn0fud.png" alt="WhatsApp" className="w-6 h-6" /></a>
-              <a href="#"><img src="https://res.cloudinary.com/desem7vhd/image/upload/v1741074251/Instagram_Glyph_Gradient_md0zct.png" alt="Instagram" className="w-6 h-6" /></a>
+              <a href="https://www.facebook.com/" className="w-10 h-10" aria-label="Facebook">
+      <img src="https://res.cloudinary.com/desem7vhd/image/upload/v1741073760/Facebook_Logo_Primary_uidern.png" alt="Facebook" />
+    </a>
+    <a href="https://www.instagram.com/learngreekwithgreeksters/" className="w-10 h-10" aria-label="Instagram">
+      <img src="https://res.cloudinary.com/desem7vhd/image/upload/v1741074251/Instagram_Glyph_Gradient_md0zct.png" alt="Instagram" />
+    </a>
+    <a href="https://wa.me/306943974126" className="w-10 h-10" aria-label="Whatsapp">
+      <img src="https://res.cloudinary.com/desem7vhd/image/upload/v1741074023/Digital_Glyph_Green_kn0fud.png" alt="Whatsapp" />
+    </a>
             </div>
           </div>
         </div>
