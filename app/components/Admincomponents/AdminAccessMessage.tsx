@@ -4,7 +4,17 @@ import { useContext } from 'react';
 import { AuthContext } from '@/app/context/AuthContext';
 
 const AdminAccessMessage = () => {
-  const { isLoggedIn } = useContext(AuthContext);
+  // 1. Grab the context
+  const context = useContext(AuthContext);
+
+  // 2. SAFETY CHECK: If the component is rendered outside the Provider, 
+  // or before initialization, we return null to avoid the crash.
+  if (!context) {
+    return null; 
+  }
+
+  // 3. Now it is safe to destructure isLoggedIn
+  const { isLoggedIn } = context;
 
   return (
     <div className="flex justify-center items-center h-24">
