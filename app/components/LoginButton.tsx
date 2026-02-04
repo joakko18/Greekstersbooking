@@ -3,18 +3,24 @@
 import { useState, useContext } from 'react';
 import { FaUser } from 'react-icons/fa';
 import LoginModal from './LoginBox';
-import { AuthContext } from '@/app/context/AuthContext'; // Import context
+import { AuthContext } from '@/app/context/AuthContext';
 
 const LoginButton: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { isLoggedIn, login, logout } = useContext(AuthContext); // Use context
+  
+  // We pull the auth state and functions from our Context "Brain"
+  const context = useContext(AuthContext);
+
+  // Safety check: if context is undefined, don't render yet
+  if (!context) return null;
+  const { isLoggedIn, login, logout } = context;
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
 
   const handleLogout = () => {
-    logout(); // Call logout from context
+    logout(); 
     alert('Logged out successfully!');
   };
 
@@ -30,11 +36,17 @@ const LoginButton: React.FC = () => {
         {isLoggedIn ? 'LOG OUT' : 'LOG IN'}
       </button>
 
+      {/* The Modal now has two distinct paths:
+          1. onClose: Just hides the window (User clicked Close/Cancel).
+          2. onLoginSuccess: Updates the global state (User actually logged in).
+      */}
       <LoginModal
         isOpen={isOpen}
-        onClose={() => {
+        onClose={() => setIsOpen(false)} 
+        onLoginSuccess={(token: string) => {
+          // This only runs if handleLogin in the Modal was successful!
+          login(token); 
           setIsOpen(false);
-          login(); // Update state after login
         }}
       />
     </>
